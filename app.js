@@ -1,3 +1,28 @@
+// Add this to the beginning of your existing app.js file
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Optionally, show your own install button or UI element here
+});
+
+// You can trigger the install prompt when a user clicks a button
+function installApp() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            deferredPrompt = null;
+        });
+    }
+}
+
 // Service Worker Registration
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
