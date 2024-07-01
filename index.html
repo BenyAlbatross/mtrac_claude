@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <form id="riskAssessmentForm">
+        <h1>Risk Assessment Form</h1>
+        
+        <fieldset>
+            <legend>Field 1: Category</legend>
+            <input type="radio" id="catAB" name="category" value="Cat A and B" required>
+            <label for="catAB">Cat A and B</label>
+            <input type="radio" id="catC" name="category" value="Cat C">
+            <label for="catC">Cat C</label>
+            <input type="radio" id="catD" name="category" value="Cat D">
+            <label for="catD">Cat D</label>
+        </fieldset>
+
+        <div>
+            <label for="startOdometer">Field 2: Start Odometer</label>
+            <input type="number" id="startOdometer" name="startOdometer" required>
+        </div>
+
+        <div>
+            <label for="signature">Field 3: Signature</label>
+            <canvas id="signatureCanvas" width="300" height="150"></canvas>
+            <button type="button" id="clearSignature">Clear Signature</button>
+        </div>
+
+        <button type="button" id="generatePDF">Generate PDF</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
